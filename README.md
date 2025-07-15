@@ -1,7 +1,7 @@
-# yaml_data_extractor
+# yaml_data_extractor [OVERVIEW]
 
-The project is developed to extract and read the data located within the YAML 
-file under the resources directory and use them in further developments ahead.
+The project is developed to extract and read the data located within the YAML file under the resources 
+directory and finding a better approach to use them further in the application's processes ahead.
 
 >>>>>> application.yaml --------> This file contains the configurations related to the entire project. 
                                   For now it consists only the environment in which the application is 
@@ -20,3 +20,5 @@ file under the resources directory and use them in further developments ahead.
 # Consists of 2 major sections
 >> 1. Reading YAML file values using SnakeYAML
 >> 2. Reading YAML file values Using Jackson Dataformat YAML
+>> 3. Extracting the data into the MajorObj POJO class
+>> 4. MajorObj POJO class can be used within the application to use the data that were extracted from the YAML files.
