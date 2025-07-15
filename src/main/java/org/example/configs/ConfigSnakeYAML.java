@@ -18,15 +18,14 @@ public class ConfigSnakeYAML {
 
     public Major dataExtractor() throws IOException {
 
-        LoaderOptions loaderOptionsEnv = new LoaderOptions();
-        String expandedEnvYaml = loadAndExpandEnvVariables("application.yaml");
+        LoaderOptions loaderOptions = new LoaderOptions();
+        loaderOptions.setTagInspector(tag -> tag.getClassName().equals(EnvironmentConfigs.class.getName()));
+        loaderOptions.setTagInspector(tag -> tag.getClassName().equals(Major.class.getName()));
+        Yaml yamlForEnv = new Yaml(new Constructor(EnvironmentConfigs.class, loaderOptions));
+        Yaml yamlForConfigs = new Yaml(new Constructor(Major.class, loaderOptions));
 
-        loaderOptionsEnv.setTagInspector(tag -> tag.getClassName().equals(EnvironmentConfigs.class.getName()));
-        loaderOptionsEnv.setTagInspector(tag -> tag.getClassName().equals(Major.class.getName()));
-        Yaml yamlForEnv = new Yaml(new Constructor(EnvironmentConfigs.class, loaderOptionsEnv));
-        Yaml yamlForConfigs = new Yaml(new Constructor(Major.class, loaderOptionsEnv));
-
-        EnvironmentConfigs environmentConfigs = yamlForEnv.load(expandedEnvYaml);
+        String extractedEnvYaml = loadAndExpandEnvVariables("application.yaml");
+        EnvironmentConfigs environmentConfigs = yamlForEnv.load(extractedEnvYaml);
 
         String yamlFileName = switch (environmentConfigs.getEnvironment()) {
             case "dev" -> "application-local.yaml";
@@ -35,8 +34,9 @@ public class ConfigSnakeYAML {
             default -> throw new IllegalArgumentException("Unsupported environment: " + environmentConfigs.getEnvironment());
         };
 
-        String expandedYaml2 = loadAndExpandEnvVariables(yamlFileName);
-        return yamlForConfigs.load(expandedYaml2);
+        String dataExtractedYaml = loadAndExpandEnvVariables(yamlFileName);
+        Major extractedDataObj = yamlForConfigs.load(dataExtractedYaml);
+        return extractedDataObj;
     }
 
 

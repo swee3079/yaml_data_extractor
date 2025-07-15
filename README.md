@@ -17,8 +17,10 @@ directory and finding a better approach to use them further in the application's
 
 
 
-# Consists of 2 major sections
+# Key points to consider
 >> 1. Reading YAML file values using SnakeYAML
 >> 2. Reading YAML file values Using Jackson Dataformat YAML
+>> 3. An issue arised when trying to capture values in environment variables. So, as a solution the 
+      YAML file was converted entirely to string to capture those values.
 >> 3. Extracting the data into the MajorObj POJO class
 >> 4. MajorObj POJO class can be used within the application to use the data that were extracted from the YAML files.
