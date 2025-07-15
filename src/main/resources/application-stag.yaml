@@ -1,0 +1,12 @@
+catalog:
+  warehouse: ${WAREHOUSE_PATH}
+  name: catalog
+  db: default_stag
+  shop_page_table: shop_page
+  product_index_table: product_index
+  campaign_table: campaign
+
+data:
+  shop_page: ${SHOP_PAGE_CSV}
+  product_index: ${PRODUCT_INDEX_CSV}
+  campaign: ${CAMPAIGN_CSV}
