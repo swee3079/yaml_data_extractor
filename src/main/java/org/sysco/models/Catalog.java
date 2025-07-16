@@ -1,4 +1,4 @@
-package org.example.models;
+package org.sysco.models;
 
 public class Catalog {
     private String warehouse;

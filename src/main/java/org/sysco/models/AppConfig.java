@@ -1,14 +1,14 @@
-package org.example.models;
+package org.sysco.models;
 
-public class Major {
+public class AppConfig {
     private Catalog catalog;
     private Data data;
 
 
-    public Major() {
+    public AppConfig() {
     }
 
-    public Major(Catalog catalog, Data data) {
+    public AppConfig(Catalog catalog, Data data) {
         this.catalog = catalog;
         this.data = data;
     }

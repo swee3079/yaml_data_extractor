@@ -1,4 +1,4 @@
-package org.example.models;
+package org.sysco.models;
 
 public class Data {
     private String shop_page;
